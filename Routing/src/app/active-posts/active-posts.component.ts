@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../post';
-import { getPostFiltered, disattivaPost } from '../post-service.service';
 import { PostService } from '../post.service';
 
 @Component({
@@ -20,9 +19,13 @@ export class ActivePostsComponent implements OnInit {
   }
 
   disattiva(id:number) {
+    console.log(id);
+    
     this.postSRV.toggleDbPost(id).then(res=>{
       if(res.ok){
         this.getPosts()
+      }else {
+        console.log("err");
       }
     })
     // this.postSRV.toggleServicePost(id)
@@ -38,6 +41,8 @@ export class ActivePostsComponent implements OnInit {
 
   getPosts() {
     this.posts = this.postSRV.getPostsFiltrati(true)
+    console.log(this.posts);
+    
   }
 
 

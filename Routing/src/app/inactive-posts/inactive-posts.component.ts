@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../post';
-import { attivaPost, getPostFiltered } from '../post-service.service';
 import { PostService } from '../post.service';
 
 @Component({
@@ -15,14 +14,32 @@ export class InactivePostsComponent implements OnInit {
   constructor(private postSRV:PostService) { }
 
   ngOnInit(): void {
-    this.posts = this.postSRV.getPostsFiltrati(false)
-  }
+    this.getPosts()
+    }
 
 
   attiva(id:number) {
-    attivaPost(id)
-    this.posts = this.posts.filter((e)=>{
-      return !(e.id == id)
+    console.log(id);
+    
+    this.postSRV.toggleDbPost(id).then(res=>{
+      if(res.ok){
+        this.getPosts()
+      }else {
+        console.log("err");
+      }
     })
+  }
+
+  elimina(id:number) {
+    this.postSRV.deleteDb(id).then(res=>{
+      if(res.ok) {
+        this.getPosts()
+      }
+    })
+  }
+
+  getPosts() {
+    this.posts = this.postSRV.getPostsFiltrati(false)
+    console.log(this.posts);
   }
 }
