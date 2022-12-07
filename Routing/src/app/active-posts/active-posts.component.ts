@@ -12,7 +12,9 @@ export class ActivePostsComponent implements OnInit {
   posts:Post[] = []
   //i dati visualizziamo (e manipoliamo in questo component)
 
-  constructor(private postSRV:PostService) { }
+  constructor(private postSRV:PostService) {
+
+   }
 
   ngOnInit(): void {
     this.getPosts()

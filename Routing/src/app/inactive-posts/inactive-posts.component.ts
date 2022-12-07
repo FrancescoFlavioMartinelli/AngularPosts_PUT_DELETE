@@ -11,7 +11,9 @@ export class InactivePostsComponent implements OnInit {
 
   posts:Post[]=[]
 
-  constructor(private postSRV:PostService) { }
+  constructor(private postSRV:PostService) { 
+
+  }
 
   ngOnInit(): void {
     this.getPosts()
