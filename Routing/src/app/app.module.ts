@@ -7,6 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { ActivePostsComponent } from './active-posts/active-posts.component';
 import { InactivePostsComponent } from './inactive-posts/inactive-posts.component';
 import { PostCardComponent } from './post-card/post-card.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,16 @@ import { PostCardComponent } from './post-card/post-card.component';
     HomeComponent,
     ActivePostsComponent,
     InactivePostsComponent,
-    PostCardComponent
+    PostCardComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

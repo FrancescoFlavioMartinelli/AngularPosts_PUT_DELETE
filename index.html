@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        class Test {
+            constructor() {}
+
+            getX() {
+                return this._x*2
+            }
+
+            get x() {
+                return this._x*3
+            }
+
+            set x(n) {
+                this._x = n-1
+            }
+        }
+
+        let t = new Test()
+        t.x = 10
+        console.log(t.getX())
+        console.log(t.x)
+    </script>
+    
+</body>
+</html>

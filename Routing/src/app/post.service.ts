@@ -12,9 +12,22 @@ export class PostService {
   constructor() { }
 
   fetchData() {    
-    fetch("http://localhost:3000/posts").then(res=>res.json()).then(res=>{
-      this.posts = res
-    })
+    let token = localStorage.getItem("token")
+    if(token){
+      fetch("http://localhost:3000/posts", {
+        headers: { 
+          "Authorization": "Bearer " + token
+        }
+      }).then(res=>res.json()).then(res=>{
+        this.posts = res
+      })
+
+      // this.http.get("http://localhost:3000/posts", null, {
+      //   headers: {
+      //     "Authorization": "Bearer " + token
+      //   }
+      // })
+    }
   }
 
   getPostsFiltrati(a:boolean) {
